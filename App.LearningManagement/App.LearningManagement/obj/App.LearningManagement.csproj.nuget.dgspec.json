@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Apps\\C#\\App.LearningManagement\\App.LearningManagement\\App.LearningManagement.csproj": {}
+    "C:\\Users\\khoad\\source\\repos\\COP4870\\App.LearningManagement\\App.LearningManagement\\App.LearningManagement.csproj": {}
   },
   "projects": {
-    "C:\\Apps\\C#\\App.LearningManagement\\App.LearningManagement\\App.LearningManagement.csproj": {
+    "C:\\Users\\khoad\\source\\repos\\COP4870\\App.LearningManagement\\App.LearningManagement\\App.LearningManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Apps\\C#\\App.LearningManagement\\App.LearningManagement\\App.LearningManagement.csproj",
+        "projectUniqueName": "C:\\Users\\khoad\\source\\repos\\COP4870\\App.LearningManagement\\App.LearningManagement\\App.LearningManagement.csproj",
         "projectName": "App.LearningManagement",
-        "projectPath": "C:\\Apps\\C#\\App.LearningManagement\\App.LearningManagement\\App.LearningManagement.csproj",
+        "projectPath": "C:\\Users\\khoad\\source\\repos\\COP4870\\App.LearningManagement\\App.LearningManagement\\App.LearningManagement.csproj",
         "packagesPath": "C:\\Users\\khoad\\.nuget\\packages\\",
-        "outputPath": "C:\\Apps\\C#\\App.LearningManagement\\App.LearningManagement\\obj\\",
+        "outputPath": "C:\\Users\\khoad\\source\\repos\\COP4870\\App.LearningManagement\\App.LearningManagement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
