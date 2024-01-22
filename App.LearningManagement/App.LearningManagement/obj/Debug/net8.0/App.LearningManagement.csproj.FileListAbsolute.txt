@@ -1,0 +1,6 @@
+C:\Apps\C#\App.LearningManagement\App.LearningManagement\obj\Debug\net8.0\App.LearningManagement.csproj.AssemblyReference.cache
+C:\Apps\C#\App.LearningManagement\App.LearningManagement\obj\Debug\net8.0\App.LearningManagement.GeneratedMSBuildEditorConfig.editorconfig
+C:\Apps\C#\App.LearningManagement\App.LearningManagement\obj\Debug\net8.0\App.LearningManagement.AssemblyInfoInputs.cache
+C:\Apps\C#\App.LearningManagement\App.LearningManagement\obj\Debug\net8.0\App.LearningManagement.AssemblyInfo.cs
+C:\Apps\C#\App.LearningManagement\App.LearningManagement\obj\Debug\net8.0\App.LearningManagement.csproj.CoreCompileInputs.cache
+C:\Apps\C#\App.LearningManagement\App.LearningManagement\obj\Debug\net8.0\App.LearningManagement.sourcelink.json
