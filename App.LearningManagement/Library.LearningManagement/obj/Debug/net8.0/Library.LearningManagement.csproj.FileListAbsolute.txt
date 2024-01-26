@@ -10,3 +10,15 @@ C:\Apps\C#\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\Li
 C:\Apps\C#\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\refint\Library.LearningManagement.dll
 C:\Apps\C#\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\Library.LearningManagement.pdb
 C:\Apps\C#\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\ref\Library.LearningManagement.dll
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\bin\Debug\net8.0\Library.LearningManagement.deps.json
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\bin\Debug\net8.0\Library.LearningManagement.dll
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\bin\Debug\net8.0\Library.LearningManagement.pdb
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\Library.LearningManagement.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\Library.LearningManagement.AssemblyInfoInputs.cache
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\Library.LearningManagement.AssemblyInfo.cs
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\Library.LearningManagement.csproj.CoreCompileInputs.cache
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\Library.LearningManagement.sourcelink.json
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\Library.LearningManagement.dll
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\refint\Library.LearningManagement.dll
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\Library.LearningManagement.pdb
+C:\Users\khoad\source\repos\COP4870\App.LearningManagement\Library.LearningManagement\obj\Debug\net8.0\ref\Library.LearningManagement.dll
