@@ -2,13 +2,22 @@
 {
     public class Person
     {
-        public int id { get; set; }
-        public string? name { get; set; }
-        public Dictionary<int, double> Grades { get; set; }
-        public char Classification { get; set; }
+        //public int id { get; set; }
+        public string? Name { get; set; }
+        public string? Grades { get; set; }
+        public string? Classification { get; set; }
+
+        public List<Course> Courses { get; set; }
+
         public Person()
         {
-            Grades = new Dictionary<int, double>();
+            Courses = new List<Course>();
+        }
+
+        public override string ToString()
+        {
+            return $"\nName {Name} \nClassification: {Classification}" +
+                $"\nGrade: {Grades}";
         }
     }
 }

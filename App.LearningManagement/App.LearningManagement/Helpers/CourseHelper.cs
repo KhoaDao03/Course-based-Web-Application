@@ -9,20 +9,49 @@ namespace App.LearningManagement.Helpers
 {
     public class CourseHelper
     {
-        private IList<Course> instances;
-        private static CourseHelper courseList;
-        private static object block;
+        private static IList<Course>? instance;
+        private static CourseHelper? courseList;
+        ////private static object block;
         private string? query;
 
-        private CourseHelper() {
-            instances = new List<Course>();
+
+        private CourseHelper()
+        {
+            instance = new List<Course>();
+
         }
+        public void Add(Course courses)
+        {
+            instance.Add(courses);
+        }
+
+        public void Remove(Course courses) 
+        { 
+            instance.Remove(courses);
+        }
+        public Course Get(int c)
+        {
+            return instance[c];
+        }
+        public int Count()
+        {
+            return instance.Count;
+        }
+
+
+        //public void addPerson(int choice, Person p)
+        //{
+        //    instance[choice].Roster.Add(p);
+        //}
+
 
         public static CourseHelper current
         {
-            get {
+            get
+            {
                 //lock (block) {
-                if (courseList == null) {
+                if (courseList == null)
+                {
                     courseList = new CourseHelper();
                 }
                 //}
@@ -31,20 +60,18 @@ namespace App.LearningManagement.Helpers
 
         }
 
-        public IEnumerable<Course> Search(string query) {
+        public IEnumerable<Course> Search(string query)
+        {
             this.query = query;
-            return instances;
+            return Instances;
         }
 
-        public void Add(Course courses)
-        {
-            instances.Add(courses);
-        }
 
         public IEnumerable<Course> Instances
         {
-            get{
-                return instances.Where(
+            get
+            {
+                return instance.Where(
                     i =>
                     i.Name.Contains(query ?? string.Empty) ||
                     i.Code.Contains(query ?? string.Empty)
@@ -52,23 +79,10 @@ namespace App.LearningManagement.Helpers
             }
         }
 
-        //public void courseName()
-        //{
-        //    Console.WriteLine("Enter course name: ");
-        //    var name = Console.ReadLine();
-        //}
 
-        //public void courseDescription()
-        //{
-        //    Console.WriteLine("Enter course description: ");
-        //    var description = Console.ReadLine();
-        //}
 
-        //public void courseCode()
-        //{
-        //    Console.WriteLine("Enter course code: ");
-        //    var code = Console.ReadLine();
-        //}
+
+
 
 
 
