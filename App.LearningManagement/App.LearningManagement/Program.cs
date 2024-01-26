@@ -37,6 +37,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 else if (choice == 3) 
                 {
                     printPersonList();
+                    Console.WriteLine("Enter any key to continue");
+                    Console.ReadKey();
                 }
                 else if (choice == 4)
                 {
@@ -52,15 +54,27 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 }
                 else if (choice == 7)
                 {
-                    removePersonToCourse();
+                    removePersonFromCourse();
                 }
                 else if (choice == 8)
                 {
                     listStudentCourse();
+                    Console.WriteLine("Enter any key to continue");
+                    Console.ReadKey();
                 }
                 else if (choice == 9)
                 {
                     listCourseStudent();
+                    Console.WriteLine("Enter any key to continue");
+                    Console.ReadKey();
+                }
+                else if (choice == 10)
+                {
+                    modifyCourse();
+                }
+                else if (choice == 11)
+                {
+                    
                 }
                 else if (choice == -1)
                 {
@@ -92,7 +106,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine("9. List all students in a course");
 
             Console.WriteLine("");
-            Console.WriteLine("9. List all students in a course");
+            Console.WriteLine("10. Modify a Course");
+            Console.WriteLine("11. Modify a Student");
+
+            Console.WriteLine("\nEnter a number: ");
 
 
 
@@ -119,6 +136,58 @@ namespace MyApp // Note: actual namespace depends on the project name.
             
         }
 
+        static int chooseCourse() {
+            Console.WriteLine("Choose a course");
+            printCourseList();
+            Console.Write("> ");
+            var choice = Console.ReadLine();
+            int cCourse;
+            while (!int.TryParse(choice, out cCourse) && cCourse < 0 && cCourse > CourseHelper.current.Count())
+            {
+                Console.WriteLine("Invalid input please try again");
+                Console.Write("> ");
+                choice = Console.ReadLine();
+
+            }
+            return cCourse;
+        }
+
+        static int choosePersonC(int cCourse) {
+            Console.WriteLine("Choose the person");
+            for (int i = 0; i < CourseHelper.current.Get(cCourse).Roster.Count; i++)
+            {
+                Console.WriteLine($"{i}. {CourseHelper.current.Get(cCourse).Roster[i]}");
+            }
+            Console.Write("> ");
+            var choice = Console.ReadLine();
+            int cPerson;
+            while (!int.TryParse(choice, out cPerson) && cPerson < 0 && cPerson > PersonHelper.current.Count())
+            {
+                Console.WriteLine("Invalid input please try again");
+                Console.Write("> ");
+                choice = Console.ReadLine();
+
+            }
+            return cPerson;
+        }
+
+        static int choosePerson() {
+            Console.WriteLine("Removing a person.");
+            printPersonList();
+            Console.WriteLine("Choose a person to remove");
+            Console.Write("> ");
+            var choice = Console.ReadLine();
+            int c;
+            while (!int.TryParse(choice, out c) && c < 0 && c > PersonHelper.current.Count())
+            {
+                Console.WriteLine("Invalid input please try again");
+                Console.Write("> ");
+                choice = Console.ReadLine();
+
+            }
+            return c;
+        }
+
         static void addCourse() {
             Console.WriteLine("Adding a new course.");
             Console.WriteLine("Enter course name: ");
@@ -141,20 +210,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
 
         static void removeCourse() {
-            Console.WriteLine("Removing a course.");
-            printCourseList();
-            Console.WriteLine("Choose a course to remove");
-            Console.Write("> ");
-            var choice = Console.ReadLine();
-            int c;
-            while (!int.TryParse(choice, out c) && c < 0 && c > CourseHelper.current.Count())
-            {
-                Console.WriteLine("Invalid input please try again");
-                Console.Write("> ");
-                choice = Console.ReadLine();
-
-            }
-            CourseHelper.current.Remove(CourseHelper.current.Get(c));
+            CourseHelper.current.Remove(CourseHelper.current.Get(chooseCourse()));
         }
         
 
@@ -197,20 +253,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         static void removePerson()
         {
-            Console.WriteLine("Removing a person.");
-            printPersonList();
-            Console.WriteLine("Choose a person to remove");
-            Console.Write("> ");
-            var choice = Console.ReadLine();
-            int c;
-            while (!int.TryParse(choice, out c) && c < 0 && c > PersonHelper.current.Count())
-            {
-                Console.WriteLine("Invalid input please try again");
-                Console.Write("> ");
-                choice = Console.ReadLine();
-
-            }
-            PersonHelper.current.Remove(PersonHelper.current.Get(c));
+            PersonHelper.current.Remove(PersonHelper.current.Get(choosePerson()));
         }
 
 
@@ -232,32 +275,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
 
         static void addPersonToCourse() {
-            Console.WriteLine("Choose a course to add student");
-            printCourseList();
-            Console.Write("> ");
-            var choice = Console.ReadLine();
-            int cCourse;
-            while (!int.TryParse(choice, out cCourse) && cCourse < 0 && cCourse > CourseHelper.current.Count())
-            {
-                Console.WriteLine("Invalid input please try again");
-                Console.Write("> ");
-                choice = Console.ReadLine();
+            int cCourse = chooseCourse();
 
-            }
-
-
-            Console.WriteLine("Choose the student to be added");
-            printPersonList();
-            Console.Write("> ");
-            choice = Console.ReadLine();
-            int cPerson;
-            while (!int.TryParse(choice, out cPerson) && cPerson < 0 && cPerson > PersonHelper.current.Count())
-            {
-                Console.WriteLine("Invalid input please try again");
-                Console.Write("> ");
-                choice = Console.ReadLine();
-
-            }
+            int cPerson = choosePersonC(cCourse);
+           
             CourseHelper.current.Get(cCourse).Roster.Add(PersonHelper.current.Get(cPerson));
             PersonHelper.current.Get(cPerson).Courses.Add(CourseHelper.current.Get(cCourse));
 
@@ -265,37 +286,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
         }
 
 
-        static void removePersonToCourse()
+        static void removePersonFromCourse()
         {
-            Console.WriteLine("Choose a course to add student");
-            printCourseList();
-            Console.Write("> ");
-            var choice = Console.ReadLine();
-            int cCourse;
-            while (!int.TryParse(choice, out cCourse) && cCourse < 0 && cCourse > CourseHelper.current.Count())
-            {
-                Console.WriteLine("Invalid input please try again");
-                Console.Write("> ");
-                choice = Console.ReadLine();
-
-            }
-
-
-            Console.WriteLine("Choose the student to be added");
-            for (int i = 0; i < CourseHelper.current.Get(cCourse).Roster.Count; i++)
-            {
-                Console.WriteLine($"{i}. {CourseHelper.current.Get(cCourse).Roster[i]}");
-            }
-            Console.Write("> ");
-            choice = Console.ReadLine();
-            int cPerson;
-            while (!int.TryParse(choice, out cPerson) && cPerson < 0 && cPerson > PersonHelper.current.Count())
-            {
-                Console.WriteLine("Invalid input please try again");
-                Console.Write("> ");
-                choice = Console.ReadLine();
-
-            }
+            int cCourse = chooseCourse();
+            int cPerson = choosePersonC(cCourse);
             CourseHelper.current.Get(cCourse).Roster.Remove(PersonHelper.current.Get(cPerson));
             PersonHelper.current.Get(cPerson).Courses.Remove(CourseHelper.current.Get(cCourse));
 
@@ -304,19 +298,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
 
         static void listStudentCourse() {
-            Console.WriteLine("Choose the student to be listed");
-            printPersonList();
-            Console.Write("> ");
-            var choice = Console.ReadLine();
-            int cPerson;
-            while (!int.TryParse(choice, out cPerson) && cPerson < 0 && cPerson > PersonHelper.current.Count())
+            int cPerson = choosePerson();
+            if (PersonHelper.current.Get(cPerson).Courses.Count() == 0)
             {
-                Console.WriteLine("Invalid input please try again");
-                Console.Write("> ");
-                choice = Console.ReadLine();
-
+                Console.WriteLine("The course list is empty. Try to add a course to proceed");
+                return;
             }
-
             foreach (Course c in PersonHelper.current.Get(cPerson).Courses) {
                 Console.WriteLine(c);
             }
@@ -325,25 +312,23 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         static void listCourseStudent()
         {
-            Console.WriteLine("Choose a course to show student");
-            printCourseList();
-            Console.Write("> ");
-            var choice = Console.ReadLine();
-            int cCourse;
-            while (!int.TryParse(choice, out cCourse) && cCourse < 0 && cCourse > CourseHelper.current.Count())
+            int cCourse = chooseCourse();
+
+            if (CourseHelper.current.Get(cCourse).Roster.Count() == 0)
             {
-                Console.WriteLine("Invalid input please try again");
-                Console.Write("> ");
-                choice = Console.ReadLine();
-
+                Console.WriteLine("The course list is empty. Try to add a course to proceed");
+                return;
             }
-
-            foreach (Person p in CourseHelper.current.Get(cCourse).Roster)
+            foreach (Person p in CourseHelper.current.Get(chooseCourse()).Roster)
             {
                 Console.WriteLine(p);
             }
         }
 
+
+        static void modifyCourse() { 
+            
+        }
 
 
 
