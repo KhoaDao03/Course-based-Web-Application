@@ -14,88 +14,99 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             Console.WriteLine("Welcome to Programming Assignment 1");
             int choice;
+
             while (true)
             {
                 choice = printMenu();
 
                 if (choice == 0)
                 {
-
                     printCourseListFull();
                     Console.WriteLine("Enter any key to continue");
                     Console.ReadKey();
                 }
+
                 else if (choice == 1)
                 {
                     addCourse();
                 }
+
                 else if (choice == 2)
                 {
                     removeCourse();
                 }
+
                 else if (choice == 3) 
                 {
                     printPersonList();
                     Console.WriteLine("Enter any key to continue");
                     Console.ReadKey();
                 }
+
                 else if (choice == 4)
                 {
                     addPerson();
                 }
+
                 else if (choice == 5) 
                 {
                     removePerson();
                 }
+
                 else if (choice == 6)
                 {
                     addPersonToCourse();
                 }
+
                 else if (choice == 7)
                 {
                     removePersonFromCourse();
                 }
+
                 else if (choice == 8)
                 {
-                    printPersonCourse(choosePerson());
+                    printPersonCourse(choosePerson());  // Courses a person takes
                     Console.WriteLine("Enter any key to continue");
                     Console.ReadKey();
                 }
+
                 else if (choice == 9)
                 {
-                    printCoursePerson(chooseCourse());
+                    printCoursePerson(chooseCourse());  // Persons in a Course
                     Console.WriteLine("Enter any key to continue");
                     Console.ReadKey();
                 }
+
                 else if (choice == 10)
                 {
                     modifyCourse();
                 }
+
                 else if (choice == 11)
                 {
                     modifyPerson();
-
                 }
+
                 else if (choice == 12)
                 {
                     searchCourse();
-
                 }
+
                 else if (choice == 13)
                 {
                     searchPerson();
-
                 }
+
                 else if (choice == 14)
                 {
                     addAssignemnt();
-
                 }
+
                 else if (choice == 15)
                 {
                     printAssignments(chooseCourse());
-
                 }
+
                 else if (choice == -1)
                 {
                     Console.WriteLine("Exit the program.");
@@ -137,18 +148,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine("14. Add Assignment");
             Console.WriteLine("15. Print Assignments in a Course");
 
-
-            Console.WriteLine("\nEnter a number: ");
-
-
-
-
-
-
-
-
             Console.WriteLine("-1. Exit the program");
 
+            Console.WriteLine("\nEnter a number: ");
             Console.Write("> ");
             var choice = Console.ReadLine();
             int c;
@@ -161,8 +163,6 @@ namespace MyApp // Note: actual namespace depends on the project name.
             
             return c;
 
-
-            
         }
 
         static int chooseCourse() {
@@ -241,25 +241,22 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         }
 
-
         static void removeCourse() {
             CourseHelper.current.Remove(CourseHelper.current.Get(chooseCourse()));
         }
         
-
-
         static void printCourseList() {
             Console.WriteLine("Printing course list.");
             if (CourseHelper.current.Count() == 0) {
                 Console.WriteLine("The course list is empty.");
                 return;
             }
-            Console.WriteLine($"There are: {CourseHelper.current.Count()} course/courses. ");
+            Console.WriteLine($"There are: {CourseHelper.current.Count()} course/courses. \n");
             for (int i = 0; i < CourseHelper.current.Count(); i++) {
                 Console.WriteLine($"{i}. {CourseHelper.current.Get(i)}");
-                Console.WriteLine("");
             }
         }
+
         static void printCourseListFull()
         {
             Console.WriteLine("Printing course list.");
@@ -268,22 +265,18 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine("The course list is empty.");
                 return;
             }
-            Console.WriteLine($"There are: {CourseHelper.current.Count()} course/courses. ");
+            Console.WriteLine($"There are: {CourseHelper.current.Count()} course/courses. \n");
             for (int i = 0; i < CourseHelper.current.Count(); i++)
             {
                 Console.WriteLine($"{i}. {CourseHelper.current.Get(i).Print()}");
-                Console.WriteLine("");
                 printCoursePerson(i);
-                Console.WriteLine("");
                 printAssignments(i);
-                Console.WriteLine("");
                 Console.WriteLine($"Module is empty");
+                Console.WriteLine("");
 
 
             }
         }
-
-
 
         static void addPerson()
         {
@@ -309,13 +302,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         }
 
-
         static void removePerson()
         {
             PersonHelper.current.Remove(PersonHelper.current.Get(choosePerson()));
         }
-
-
 
         static void printPersonList()
         {
@@ -332,7 +322,6 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
         }
 
-
         static void addPersonToCourse() {
             int cCourse = chooseCourse();
 
@@ -344,17 +333,13 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         }
 
-
         static void removePersonFromCourse()
         {
             int cCourse = chooseCourse();
             int cPerson = choosePersonC(cCourse);
             CourseHelper.current.Get(cCourse).Roster.Remove(PersonHelper.current.Get(cPerson));
             PersonHelper.current.Get(cPerson).Courses.Remove(CourseHelper.current.Get(cCourse));
-
-
         }
-
 
         static void printPersonCourse(int cPerson) {
 
@@ -369,7 +354,6 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine(c);
             }
         }
-
 
         static void printCoursePerson(int cCourse)
         {
@@ -386,7 +370,6 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine(p);
             }
         }
-
 
         static void modifyCourse() {
             int cCourse = chooseCourse();
@@ -484,10 +467,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.Write("> ");
             var query = Console.ReadLine();
             Console.WriteLine($"Query: {query}");
-
+            if (CourseHelper.current.Search(query ?? "").Count() == 0) {
+                Console.WriteLine("No Result Found.");
+                return;
+            }
             foreach (Course i in CourseHelper.current.Search(query ?? "")) { 
                 Console.WriteLine(i);
-                Console.WriteLine("");
                 Console.WriteLine($"Persons:");
                 if (i.Roster.Count() == 0)
                 {
@@ -502,7 +487,6 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     }
                 }
 
-                Console.WriteLine("");
                 Console.WriteLine("Assignments: ");
                 if (i.Assignments.Count() == 0)
                 {
@@ -513,8 +497,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 {
                     Console.WriteLine(a);
                 }
-                Console.WriteLine("");
                 Console.WriteLine($"Module is empty");
+                Console.WriteLine("");
+
             }
 
         }
@@ -524,6 +509,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine("Enter the keyword to search in Name:");
             Console.Write("> ");
             var query = Console.ReadLine();
+            if (PersonHelper.current.Search(query ?? "").Count() == 0)
+            {
+                Console.WriteLine("No Result Found.");
+                return;
+            }
             foreach (Person i in PersonHelper.current.Search(query ?? ""))
             {
                 Console.WriteLine(i);
@@ -576,8 +566,5 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine(a);
             }
         }
-
-
-
     }
 }
