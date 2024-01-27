@@ -13,6 +13,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
         {
 
             Console.WriteLine("Welcome to Programming Assignment 1");
+            Console.WriteLine("Name: Khoa Dao");
+
             int choice;
 
             while (true)
@@ -260,13 +262,14 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static void printCourseListFull()
         {
             Console.WriteLine("Printing course list.");
-            if (CourseHelper.current.Count() == 0)
+            int count = CourseHelper.current.Count();
+            if (count == 0)
             {
                 Console.WriteLine("The course list is empty.");
                 return;
             }
             Console.WriteLine($"There are: {CourseHelper.current.Count()} course/courses. \n");
-            for (int i = 0; i < CourseHelper.current.Count(); i++)
+            for (int i = 0; i < count; i++)
             {
                 Console.WriteLine($"{i}. {CourseHelper.current.Get(i).Print()}");
                 printCoursePerson(i);
@@ -365,7 +368,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine("The person list is empty.");
                 return;
             }
-            foreach (Person p in CourseHelper.current.Get(chooseCourse()).Roster)
+            foreach (Person p in CourseHelper.current.Get(cCourse).Roster)
             {
                 Console.WriteLine(p);
             }
