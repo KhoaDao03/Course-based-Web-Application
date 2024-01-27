@@ -134,7 +134,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             Console.WriteLine("");
             Console.WriteLine("6. Add a person to a course");
-            Console.WriteLine("7. Remove a perosn from a course");
+            Console.WriteLine("7. Remove a person from a course");
             Console.WriteLine("8. List all courses a person is taking");
             Console.WriteLine("9. List all Persons in a course");
 
@@ -318,7 +318,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine("The person list is empty.");
                 return;
             }
-            Console.WriteLine($"There are: {PersonHelper.current.Count()} person/Person. ");
+            Console.WriteLine($"There are: {PersonHelper.current.Count()} person. ");
             for (int i = 0; i < PersonHelper.current.Count(); i++)
             {
                 Console.WriteLine($"{i}. {PersonHelper.current.Get(i)}");
@@ -344,7 +344,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
             PersonHelper.current.Get(cPerson).Courses.Remove(CourseHelper.current.Get(cCourse));
         }
 
-        static void printPersonCourse(int cPerson) {
+        static void printPersonCourse(int cPerson)
+        {    // Courses a person takes
 
             Console.WriteLine("Courses: ");
 
@@ -358,7 +359,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
         }
 
-        static void printCoursePerson(int cCourse)
+        static void printCoursePerson(int cCourse) // Persons in a Course
         {
 
             Console.WriteLine("Person:");
@@ -475,34 +476,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 return;
             }
             foreach (Course i in CourseHelper.current.Search(query ?? "")) { 
-                Console.WriteLine(i);
-                Console.WriteLine($"Persons:");
-                if (i.Roster.Count() == 0)
-                {
-                    Console.WriteLine("The course list is empty.");
-
-                }
-                else
-                {
-                    foreach (Person p in i.Roster)
-                    {
-                        Console.WriteLine(p);
-                    }
-                }
-
-                Console.WriteLine("Assignments: ");
-                if (i.Assignments.Count() == 0)
-                {
-                    Console.WriteLine("The assignemnt list is empty.");
-                    return;
-                }
-                foreach (Assignment a in i.Assignments)
-                {
-                    Console.WriteLine(a);
-                }
-                Console.WriteLine($"Module is empty");
-                Console.WriteLine("");
-
+                Console.WriteLine(i.Print());
             }
 
         }
