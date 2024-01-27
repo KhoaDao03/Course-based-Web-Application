@@ -28,7 +28,12 @@ namespace Library.LearningManagement.Models
 
         public override string ToString()
         {
-            return $"({Code} {Name} - {Description})";
+            return $"(Code: {Code} Name: {Name})";
+        }
+
+        public string Print()
+        {
+            return $"(Code: {Code} Name: {Name} \nDescription{Description})";
         }
     }
 }

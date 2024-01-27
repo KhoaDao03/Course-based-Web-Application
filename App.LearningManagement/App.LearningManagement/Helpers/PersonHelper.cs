@@ -12,6 +12,8 @@ namespace App.LearningManagement.Helpers
     {
         private static PersonHelper personList;
         private IList<Person> instance;
+        private string? query;
+
         private PersonHelper() {
             instance = new List<Person>();
         }
@@ -47,8 +49,35 @@ namespace App.LearningManagement.Helpers
         {
             return instance.Count;
         }
+        public void setName(int c, string n)
+        {
+            instance[c].Name = n;
+        }
+        public void setGrade(int c, string n)
+        {
+            instance[c].Grades = n;
+        }
+        public void setClassification(int c, string n)
+        {
+            instance[c].Classification = n;
+        }
 
+        public IEnumerable<Person> Search(string query) 
+        {
+            this.query = query;
+            return Instances;
+        }
 
+        public IEnumerable<Person> Instances
+        {
+            get
+            {
+                return instance.Where(
+                    i =>
+                    i.Name.ToUpper().Contains(query.ToUpper() ?? string.Empty) 
+                    );
+            }
+        }
         //public void Add(Person persons) { 
         //    instance.Add(persons);
         //}

@@ -1,6 +1,7 @@
 ﻿using Library.LearningManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,10 @@ namespace App.LearningManagement.Helpers
         {
             instance.Add(courses);
         }
+        public void Add(int c, Assignment a)
+        {
+            instance[c].Assignments.Add(a);
+        }
 
         public void Remove(Course courses) 
         { 
@@ -38,7 +43,18 @@ namespace App.LearningManagement.Helpers
             return instance.Count;
         }
 
-
+        public void setName(int c, string n)
+        {
+            instance[c].Name= n;
+        }
+        public void setCode(int c, string n)
+        {
+            instance[c].Code = n;
+        }
+        public void setDescription(int c, string n)
+        {
+            instance[c].Description = n;
+        }
         //public void addPerson(int choice, Person p)
         //{
         //    instance[choice].Roster.Add(p);
@@ -73,8 +89,8 @@ namespace App.LearningManagement.Helpers
             {
                 return instance.Where(
                     i =>
-                    i.Name.Contains(query ?? string.Empty) ||
-                    i.Code.Contains(query ?? string.Empty)
+                    i.Name.ToUpper().Contains(query.ToUpper() ?? string.Empty) ||
+                    i.Description.ToUpper().Contains(query.ToUpper() ?? string.Empty)
                     );
             }
         }

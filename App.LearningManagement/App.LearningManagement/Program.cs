@@ -74,7 +74,28 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 }
                 else if (choice == 11)
                 {
-                    
+                    modifyPerson();
+
+                }
+                else if (choice == 12)
+                {
+                    searchCourse();
+
+                }
+                else if (choice == 13)
+                {
+                    searchPerson();
+
+                }
+                else if (choice == 14)
+                {
+                    addAssignemnt();
+
+                }
+                else if (choice == 15)
+                {
+                    printAssignments(chooseCourse());
+
                 }
                 else if (choice == -1)
                 {
@@ -107,7 +128,16 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             Console.WriteLine("");
             Console.WriteLine("10. Modify a Course");
-            Console.WriteLine("11. Modify a Student");
+            Console.WriteLine("11. Modify a Person");
+
+            Console.WriteLine("");
+            Console.WriteLine("12. Search a Course");
+            Console.WriteLine("13. Search a Person");
+
+            Console.WriteLine("");
+            Console.WriteLine("14. Add Assignment");
+            Console.WriteLine("15. Print Assignments in a Course");
+
 
             Console.WriteLine("\nEnter a number: ");
 
@@ -123,7 +153,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.Write("> ");
             var choice = Console.ReadLine();
             int c;
-            while (!int.TryParse(choice, out c) && c < -1 && c > 2 ) { 
+            while (!int.TryParse(choice, out c)) { 
                 Console.WriteLine("Invalid input please try again");
                 Console.Write("> ");
                 choice = Console.ReadLine();
@@ -203,7 +233,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
             var code = Console.ReadLine();
 
             Course course;
-            course = new Course { Name = name, Description = description, Code = code };
+            course = new Course { 
+                Name = name, 
+                Description = description, 
+                Code = code 
+            };
             CourseHelper.current.Add(course);
 
         }
@@ -223,7 +257,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
             Console.WriteLine($"There are: {CourseHelper.current.Count()} course/courses. ");
             for (int i = 0; i < CourseHelper.current.Count(); i++) {
-                Console.WriteLine($"{i}. {CourseHelper.current.Get(i)}");
+                Console.WriteLine($"{i}. {CourseHelper.current.Get(i).Print()}");
             }
         }
 
@@ -245,7 +279,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
             var grade = Console.ReadLine();
 
             Person person;
-            person = new Person { Name = name, Classification = classification, Grades = grade };
+            person = new Person { 
+                Name = name, 
+                Classification = classification, 
+                Grades = grade 
+            };
             PersonHelper.current.Add(person);
 
         }
@@ -277,7 +315,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static void addPersonToCourse() {
             int cCourse = chooseCourse();
 
-            int cPerson = choosePersonC(cCourse);
+            int cPerson = choosePerson();
            
             CourseHelper.current.Get(cCourse).Roster.Add(PersonHelper.current.Get(cPerson));
             PersonHelper.current.Get(cPerson).Courses.Add(CourseHelper.current.Get(cCourse));
@@ -326,10 +364,161 @@ namespace MyApp // Note: actual namespace depends on the project name.
         }
 
 
-        static void modifyCourse() { 
-            
+        static void modifyCourse() {
+            int cCourse = chooseCourse();
+            Console.WriteLine("Which one do you want to modify:");
+            Console.WriteLine("0. Name");
+            Console.WriteLine("1. Code");
+            Console.WriteLine("2. Description");
+            Console.Write("> ");
+            var choice = Console.ReadLine();
+            int c;
+            while (!int.TryParse(choice, out c))
+            {
+                Console.WriteLine("Invalid input please try again");
+                Console.Write("> ");
+                choice = Console.ReadLine();
+
+            }
+            var ans = String.Empty;
+
+            if (c == 0) {
+                Console.WriteLine("Enter course Name: ");
+                Console.Write("> ");
+                ans = Console.ReadLine();
+                CourseHelper.current.setName(cCourse, ans);
+
+            } else if (c == 1) {
+                Console.WriteLine("Enter course Code: ");
+                Console.Write("> ");
+                ans = Console.ReadLine();
+                CourseHelper.current.setCode(cCourse, ans);
+
+            } else if (c == 2) {
+                Console.WriteLine("Enter course Description: ");
+                Console.Write("> ");
+                ans = Console.ReadLine();
+                CourseHelper.current.setDescription(cCourse, ans);
+
+            } else {
+                Console.WriteLine("No Operation Found");
+            }
         }
 
+        static void modifyPerson()
+        {
+            int cPerson = choosePerson();
+            Console.WriteLine("Which one do you want to modify:");
+            Console.WriteLine("0. Name");
+            Console.WriteLine("1. Grade");
+            Console.WriteLine("2. Classification");
+            Console.Write("> ");
+            var choice = Console.ReadLine();
+            int c;
+            while (!int.TryParse(choice, out c))
+            {
+                Console.WriteLine("Invalid input please try again");
+                Console.Write("> ");
+                choice = Console.ReadLine();
+
+            }
+            var ans = String.Empty;
+
+            if (c == 0)
+            {
+                Console.WriteLine("Enter person Name: ");
+                Console.Write("> ");
+                ans = Console.ReadLine();
+                PersonHelper.current.setName(cPerson, ans ?? "");
+
+            }
+            else if (c == 1)
+            {
+                Console.WriteLine("Enter person Grade: ");
+                Console.Write("> ");
+                ans = Console.ReadLine();
+                PersonHelper.current.setGrade(cPerson, ans ?? "");
+
+            }
+            else if (c == 2)
+            {
+                Console.WriteLine("Enter person Classification: ");
+                Console.Write("> ");
+                ans = Console.ReadLine();
+                PersonHelper.current.setClassification(cPerson, ans?? "");
+
+            }
+            else
+            {
+                Console.WriteLine("No Operation Found");
+            }
+        }
+
+        static void searchCourse()
+        {
+            Console.WriteLine("Enter the keyword to search in Name and Description: ");
+            Console.Write("> ");
+            var query = Console.ReadLine();
+            Console.WriteLine($"Query: {query}");
+
+            foreach (Course i in CourseHelper.current.Search(query ?? "")) { 
+                Console.WriteLine(i);
+            }
+
+        }
+
+        static void searchPerson()
+        {
+            Console.WriteLine("Enter the keyword to search in Name:");
+            Console.Write("> ");
+            var query = Console.ReadLine();
+            foreach (Person i in PersonHelper.current.Search(query ?? ""))
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        static void addAssignemnt() {
+
+            int cCourse = chooseCourse();
+            Console.WriteLine("Enter assignment name: ");
+            var name = Console.ReadLine();
+            Console.WriteLine("Enter assignment description: ");
+            var description = Console.ReadLine();
+            Console.WriteLine("Enter assignemnt total available points: ");
+            var points = Console.ReadLine();
+            Console.WriteLine("Enter assignemnt due date: ");
+            var date = Console.ReadLine();
+            DateTime d;
+            if (!DateTime.TryParse(date, out d))
+            {
+                d = DateTime.Now;
+            }
+
+            double p;
+            if (!double.TryParse(points, out p))
+            {
+                p = 0; 
+            }
+
+            Assignment assign = new Assignment
+            {
+                Name = name,
+                Description = description,
+                TotalAvailablePoints = (decimal?)p,
+                DueDate = d
+            };
+            CourseHelper.current.Add(cCourse, assign);
+
+        }
+
+        static void printAssignments(int cCourse)
+        {
+            Console.WriteLine("Assignments: ");
+            foreach (Assignment a in CourseHelper.current.Get(cCourse).Assignments) { 
+                Console.WriteLine(a);
+            }
+        }
 
 
 
