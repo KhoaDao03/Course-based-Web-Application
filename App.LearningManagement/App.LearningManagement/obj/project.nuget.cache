@@ -1,6 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "TePKMb5rXQnZ9N+xCEgDd3yFwR7rN59uRd5lWyb9yDBofxTs+JUvkxXNEF07H9W5kL0+AFbAlJ4a4eOSHGVPnA==",
+  "dgSpecHash": "MGVAGT6AZr73eUB4jpyU0EzKzWGvFMcS1qi4WrNMDesQqOqKGtDzAbr1lsteqtcXxEsO/uXUEDoCKMzu/RXx9A==",
+
   "success": true,
   "projectFilePath": "C:\\Users\\khoad\\source\\repos\\COP4870\\App.LearningManagement\\App.LearningManagement\\App.LearningManagement.csproj",
   "expectedPackageFiles": [],
