@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Maui.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Student" Grid.Column="0" Clicked="Student_Clicked"></Button>
+
+
+                <Button Text ="Instructor" Grid.Column="1" Clicked="Instructor_Clicked"></Button>
+                    
+
+                
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
