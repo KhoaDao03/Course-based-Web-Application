@@ -4,10 +4,13 @@
              x:Class="App.Maui.Views.InstructorView"
              Title="InstructorView">
     <VerticalStackLayout>
+
         <ListView
-            ItemsSource ="{Binding Students}">
+            ItemsSource ="{Binding Instructors}">
         </ListView>
-        
+        <Entry Text="{Binding InstructorName}"/>
+        <Button Text="Add Instructor" Clicked="Add_Clicked"></Button>
+        <Button Text="Remove Instructor" Clicked="Remove_Clicked"></Button>
         <Button Text="Home" Clicked="Home_Clicked"/>
 
     </VerticalStackLayout>

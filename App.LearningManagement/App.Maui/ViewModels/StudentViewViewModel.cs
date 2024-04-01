@@ -8,17 +8,17 @@ namespace App.Maui.ViewModels
 {
     public class StudentViewViewModel
     {
-        private IEnumerable<string> instructor;
-        public IEnumerable<string> Instructors
+        private IEnumerable<string> student;
+        public IEnumerable<string> Students
         {
             get
             {
-                return instructor;
+                return student;
             }
         }
         public StudentViewViewModel()
         {
-            instructor = new List<string> { "Bellona", "Lua", "Nahkwol" };
+            student = new List<string> { "Bellona", "Lua", "Nahkwol" };
         }
     }
 }

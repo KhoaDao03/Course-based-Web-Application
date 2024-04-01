@@ -1,25 +1,43 @@
-﻿using Library.LearningManagement.Services;
+﻿
+using Library.LearningManagement.Models;
+using Library.LearningManagement.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace App.Maui.ViewModels
 {
-    public class InstructorViewViewModel
+    public class InstructorViewViewModel: INotifyPropertyChanged
     {
-        private IEnumerable<string> student;
-        public IEnumerable<string> Students 
+        private InstructorService instructorSvc;
+
+
+        public InstructorViewViewModel()
         {
-            get
-            {
-                return StudentService.Students;
+            instructorSvc = InstructorService.Current;
+        }
+        public ObservableCollection<Person> Instructors
+        {
+            get { 
+                return new ObservableCollection<Person>(instructorSvc.instructors);
             }
         }
-        public InstructorViewViewModel() 
-        { 
-           
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void AddInstructor()
+        {
+            instructorSvc.Add(new Person { Name = "Acheron" });
+            NotifyPropertyChanged(nameof(Instructors));
         }
     }
 }

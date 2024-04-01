@@ -5,7 +5,7 @@
              Title="StudentView">
     <VerticalStackLayout>
         <ListView
-            ItemsSource ="{Binding Instructors}">
+            ItemsSource ="{Binding Students}">
         </ListView>
 
         <Button Text="Home" Clicked="Home_Clicked"/>
