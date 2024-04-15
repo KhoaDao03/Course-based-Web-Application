@@ -15,10 +15,18 @@ public partial class InstructorView : ContentPage
 
     private void Add_Clicked(object sender, EventArgs e)
     {
-        (BindingContext as InstructorViewViewModel).AddInstructor();
+        //(BindingContext as InstructorViewViewModel).AddInstructor();
+        Shell.Current.GoToAsync("//InstructorDialog");
+
     }
     private void Remove_Clicked(object sender, EventArgs e)
     {
+        (BindingContext as InstructorViewViewModel)?.Remove();
 
+    }
+
+    private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
+    {
+        (BindingContext as InstructorViewViewModel)?.Refresh();
     }
 }

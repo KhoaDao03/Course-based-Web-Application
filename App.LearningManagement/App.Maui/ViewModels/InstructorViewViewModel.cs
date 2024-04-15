@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace App.Maui.ViewModels
 {
-    public class InstructorViewViewModel: INotifyPropertyChanged
+    public class InstructorViewViewModel : INotifyPropertyChanged
     {
         private InstructorService instructorSvc;
 
@@ -23,7 +23,8 @@ namespace App.Maui.ViewModels
         }
         public ObservableCollection<Person> Instructors
         {
-            get { 
+            get
+            {
                 return new ObservableCollection<Person>(instructorSvc.instructors);
             }
         }
@@ -34,10 +35,20 @@ namespace App.Maui.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void AddInstructor()
+        public void Refresh()
         {
-            instructorSvc.Add(new Person { Name = "Acheron" });
+            //instructorSvc.Add(new Person { Name = "Acheron" });
             NotifyPropertyChanged(nameof(Instructors));
+        }
+
+        public Person SelectedInstructor
+        {
+            get; set;
+        }
+        public void Remove()
+        {
+            instructorSvc.Remove(SelectedInstructor);
+            Refresh();
         }
     }
 }
