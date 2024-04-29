@@ -31,7 +31,25 @@
          Route="InstructorDialog" 
          ContentTemplate="{DataTemplate dialogs:InstructorDialog}"
          />
-
-
+    <ShellContent
+         Title="Instructor Function View"
+         Route="InstructorFunctions" 
+         ContentTemplate="{DataTemplate views:InstructorFunctions}"
+         />
+    <ShellContent
+         Title="Student Dialog View"
+         Route="StudentDialog" 
+         ContentTemplate="{DataTemplate dialogs:StudentDialog}"
+        />
+    <ShellContent
+        Title="Course View"
+        Route="Course" 
+        ContentTemplate="{DataTemplate views:CourseView}"
+        />
+    <ShellContent
+        Title="Course Dialog View"
+        Route="CourseDialog" 
+        ContentTemplate="{DataTemplate dialogs:CourseDialog}"
+        />
 
 </Shell>

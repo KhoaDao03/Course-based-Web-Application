@@ -8,6 +8,7 @@ namespace Library.LearningManagement.Models
 {
     public class Course
     {
+        public int Id { get; set; }
         public string? Code { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
@@ -17,7 +18,8 @@ namespace Library.LearningManagement.Models
 
         public List<Module> Modules { get; set; }
 
-        public Course() { 
+        public Course() {
+            id = 0;
             Code = string.Empty;
             Name = string.Empty;   
             Description = string.Empty;
@@ -28,7 +30,7 @@ namespace Library.LearningManagement.Models
 
         public override string ToString()
         {
-            return $"Code: {Code} Name: {Name}";
+            return $"Code: {Code} \nName: {Name} \nDescription: {Description}\n";
         }
 
         public string Print()

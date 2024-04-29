@@ -40,6 +40,10 @@ namespace Library.LearningManagement.Services
 
         public void Add(Person instructor)
         {
+            if (instructor.Id <= 0)
+            {
+                instructor.Id = LastId + 1;
+            }
             FakeDatabase.Instructors.Add(instructor);
         }
 
@@ -52,6 +56,17 @@ namespace Library.LearningManagement.Services
         {
             return FakeDatabase.Instructors.FirstOrDefault(x => x.Name == name);
         }
+
+
+        private int LastId
+        {
+            get
+            {
+                return instructors.Select(c => c.Id).Max();
+            }
+        }
+
+        
         //private static InstructorService instructorList;
         //private IList<Person> instance;
         //private string? query;

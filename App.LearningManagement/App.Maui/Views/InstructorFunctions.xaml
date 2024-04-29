@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Maui.Views.InstructorFunctions"
+             Title="InstructorFunctions"
+             NavigatedTo="ContentPage_NavigatedTo">
+    <VerticalStackLayout>
+        <Label 
+            Text="Instructor Functions"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ListView
+            ItemsSource ="{Binding Students}"
+            SelectedItem="{Binding SelectedStudent}"
+            >    
+        </ListView>
+        <Button Text="Add Students" Clicked="Add_Clicked"></Button>
+        <Button Text="Remove Students" Clicked="Remove_Clicked"></Button>
+        <Button Text="Back" Clicked="Back_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

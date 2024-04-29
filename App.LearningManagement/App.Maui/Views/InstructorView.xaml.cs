@@ -29,4 +29,15 @@ public partial class InstructorView : ContentPage
     {
         (BindingContext as InstructorViewViewModel)?.Refresh();
     }
+
+
+    private void Students_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("//InstructorFunctions");
+    }
+
+    private void Courses_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("//Course");
+    }
 }

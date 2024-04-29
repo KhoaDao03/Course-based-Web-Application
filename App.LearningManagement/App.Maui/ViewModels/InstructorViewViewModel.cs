@@ -37,7 +37,6 @@ namespace App.Maui.ViewModels
 
         public void Refresh()
         {
-            //instructorSvc.Add(new Person { Name = "Acheron" });
             NotifyPropertyChanged(nameof(Instructors));
         }
 
