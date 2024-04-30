@@ -18,9 +18,9 @@ namespace App.Maui.ViewModels
         public string Name
         {
             get { return instructor?.Name ?? string.Empty; }
-            set { 
+            set {
                 if (instructor == null) instructor = new Person();
-                instructor.Name = value; 
+                instructor.Name = value;
             }
         }
 
@@ -30,8 +30,8 @@ namespace App.Maui.ViewModels
         {
             get { return instructor?.Classification ?? string.Empty; }
             set {
-                if (instructor == null) instructor = new Person(); 
-                instructor.Classification = value; 
+                if (instructor == null) instructor = new Person();
+                instructor.Classification = value;
             }
         }
 
@@ -40,25 +40,36 @@ namespace App.Maui.ViewModels
             get { return instructor?.Grades ?? string.Empty; }
             set {
                 if (instructor == null) instructor = new Person();
-                instructor.Grades = value; 
+                instructor.Grades = value;
             }
         }
 
-        public InstructorDialogViewModel()
+        public InstructorDialogViewModel(int iId)
         {
-            instructor = new Person
+            if (iId == 0)
             {
-                Name = "Acheron",
-                Classification = "Instructor",
-                Grades = string.Empty
-            };
+                instructor = new Person
+                {
+                    Name = "Acheron",
+                    Classification = "Instructor",
+                    Grades = string.Empty
+                };
+            } 
+            else
+            {
+                instructor = InstructorService.Current.Get(iId) ?? new Person();
+                
+            }
         }
+        
+            
+        
 
         public void AddInstructor()
         {
             if (instructor != null)
             {
-                InstructorService.Current.Add(instructor);
+                InstructorService.Current.AddOrUpdate(instructor);
                 instructor = null;
             }
         }

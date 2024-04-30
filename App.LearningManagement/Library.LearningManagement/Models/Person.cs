@@ -16,7 +16,7 @@
 
         public override string ToString()
         {
-            return $"\nName {Name} \nClassification: {Classification}" +
+            return $"\n {Id}: Name {Name} \nClassification: {Classification}" +
                 $"\nGrade: {Grades}";
         }
     }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Library.LearningManagement.Services
 {
@@ -38,13 +39,23 @@ namespace Library.LearningManagement.Services
             }
         }
 
-        public void Add(Person instructor)
+        public void AddOrUpdate(Person instructor)
         {
             if (instructor.Id <= 0)
             {
                 instructor.Id = LastId + 1;
             }
-            FakeDatabase.Instructors.Add(instructor);
+            var existsInstructor = FakeDatabase.Instructors.FirstOrDefault(x => x.Id == instructor.Id);
+            if (existsInstructor != null)
+            {
+                // If it exists, update the existing instance instead of removing and adding.
+                FakeDatabase.Instructors[FakeDatabase.Instructors.IndexOf(existsInstructor)] = instructor;
+            }
+            else
+            {
+                // If it does not exist, add it to the list.
+                FakeDatabase.Instructors.Add(instructor);
+            }
         }
 
         public void Remove(Person instructor)
@@ -64,6 +75,11 @@ namespace Library.LearningManagement.Services
             {
                 return instructors.Select(c => c.Id).Max();
             }
+        }
+
+        public Person? Get(int id)
+        {
+            return FakeDatabase.Instructors.FirstOrDefault(c => c.Id == id);
         }
 
         

@@ -5,12 +5,14 @@ using Library.LearningManagement.Services;
 
 namespace App.Maui.Dialogs;
 
+[QueryProperty(nameof(InstructorId), "instructorId")]
 public partial class InstructorDialog : ContentPage
 {
+    public int InstructorId { get; set; }
 	public InstructorDialog()
 	{
 		InitializeComponent();
-        BindingContext = new InstructorDialogViewModel();
+        BindingContext = new InstructorDialogViewModel(0);
 
     }
 
@@ -31,7 +33,7 @@ public partial class InstructorDialog : ContentPage
 
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
-        BindingContext = new InstructorDialogViewModel();
+        BindingContext = new InstructorDialogViewModel(InstructorId);
 
     }
 

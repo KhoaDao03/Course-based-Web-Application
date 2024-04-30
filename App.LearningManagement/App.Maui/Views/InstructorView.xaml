@@ -13,6 +13,7 @@
         </ListView>
         <Entry Text="{Binding InstructorName}"/>
         <Button Text="Add Instructor" Clicked="Add_Clicked"></Button>
+        <Button Text="Update Instructor" Clicked="Update_Clicked"></Button>
         <Button Text="Remove Instructor" Clicked="Remove_Clicked"></Button>
         <Button Text="View Students" Clicked="Students_Clicked"></Button>
         <Button Text="View Courses" Clicked="Courses_Clicked"></Button>

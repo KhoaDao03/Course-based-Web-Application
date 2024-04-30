@@ -16,7 +16,7 @@ public partial class InstructorView : ContentPage
     private void Add_Clicked(object sender, EventArgs e)
     {
         //(BindingContext as InstructorViewViewModel).AddInstructor();
-        Shell.Current.GoToAsync("//InstructorDialog");
+        Shell.Current.GoToAsync($"//InstructorDialog?cientId=0");
 
     }
     private void Remove_Clicked(object sender, EventArgs e)
@@ -39,5 +39,17 @@ public partial class InstructorView : ContentPage
     private void Courses_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync("//Course");
+    }
+    private void Update_Clicked(object sender, EventArgs e)
+    {
+        //(BindingContext as InstructorViewViewModel).AddInstructor();
+        var instructorId = (BindingContext as InstructorViewViewModel)?.SelectedInstructor?.Id;
+        if (instructorId != null)
+        {
+            Shell.Current.GoToAsync($"//InstructorDialog?instructorId={instructorId}");
+
+        }
+
+
     }
 }

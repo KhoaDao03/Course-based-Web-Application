@@ -58,7 +58,7 @@ namespace Library.LearningManagement.Services
         {
             get
             {
-                return instructors.Select(c => c.Id).Max();
+                return students.Select(c => c.Id).Max();
             }
         }
 

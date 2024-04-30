@@ -19,7 +19,7 @@ namespace Library.LearningManagement.Models
         public List<Module> Modules { get; set; }
 
         public Course() {
-            id = 0;
+            Id = 0;
             Code = string.Empty;
             Name = string.Empty;   
             Description = string.Empty;
